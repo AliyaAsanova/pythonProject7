@@ -1,23 +1,6 @@
 import random
 
-def print_board(board):
-    for row in board:
-        print(" ".join(row))
 
-def random_row_col():
-    return random.randint(0, 4)
-
-def player_input():
-    while True:
-        try:
-            row = int(input("Enter a row (0-4): "))
-            col = int(input("Enter a column (0-4): "))
-            if 0 <= row <= 4 and 0 <= col <= 4:
-                return row, col
-            else:
-                print("Invalid input. Please enter values between 0 and 4.")
-        except ValueError:
-            print("Invalid input. Please enter numeric values.")
 
 def main():
     print("Welcome to Sea Battle Game!")
