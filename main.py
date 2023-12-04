@@ -1,6 +1,5 @@
 import os
 import string
-import random
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -59,7 +58,7 @@ def place_ship(board, ship):
 def initialize_board():
     board = [[' ']*7 for _ in range(7)]
     ships = {'3': 1, '2': 2, '1': 4}
-    
+
     for ship, quantity in ships.items():
         for _ in range(quantity):
             clear_screen()
@@ -69,7 +68,7 @@ def initialize_board():
 
     return board
 
-def take_shot():
+def take_shot(shot_board):
     while True:
         try:
             coords = input("Enter coordinates to shoot (e.g., A1): ").upper()
@@ -78,7 +77,7 @@ def take_shot():
             print("Invalid input. Please try again.")
             continue
 
-        if 0 <= col < 7 and 0 <= row < 7:
+        if 0 <= col < 7 and 0 <= row < 7 and shot_board[row][col] == ' ':
             return col, row
         else:
             print("Invalid shot. Please try again.")
@@ -100,6 +99,34 @@ def main():
     player_name = input("Enter your name: ")
     player_score = 0
 
-  
+    while True:
+        clear_screen()
+        print(f"Welcome, {player_name}!")
+
+        board = initialize_board()
+        shot_board = [[' ']*7 for _ in range(7)]
+
+        while not check_victory(board):
+            clear_screen()
+            print(f"{player_name}'s Board:")
+            print_board(board)
+            print("\nShot Board:")
+            print_board(shot_board)
+
+            col, row = take_shot(shot_board)
+            shot_board = update_board(board, shot_board, col, row)
+            player_score += 1
+
+        clear_screen()
+        print("Congratulations, you sank all the ships!")
+        print(f"{player_name}'s Board:")
+        print_board(board)
+        print(f"Number of shots: {player_score}")
+        play_again = input("Do you want to play again? (yes/no): ").lower()
+
+        if play_again != 'yes':
+            print("Game over. Thank you for playing!")
+            break
+
 if __name__ == "__main__":
     main()
