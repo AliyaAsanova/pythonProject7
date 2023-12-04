@@ -15,9 +15,7 @@ def main():
     player_ship_row, player_ship_col = player_input()
     player_board[player_ship_row][player_ship_col] = "S"
     
-    # Place computer's ship
-    comp_ship_row, comp_ship_col = random_row_col(), random_row_col()
-    
+  
     print("\nPlayer's Board:")
     print_board(player_board)
     
