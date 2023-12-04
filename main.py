@@ -33,14 +33,7 @@ def main():
             board[guess_row][guess_col] = "X"
         
         
-        if comp_guess_row == player_ship_row and comp_guess_col == player_ship_col:
-            print("Oh no! The computer sank your ship. You lose!")
-            break
-        elif board[comp_guess_row][comp_guess_col] == "X":
-            print("The computer already guessed that one. It tries again.")
-        else:
-            print("The computer missed!")
-            board[comp_guess_row][comp_guess_col] = "X"
+     
 
 if __name__ == "__main__":
     main()
