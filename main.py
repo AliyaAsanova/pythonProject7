@@ -12,8 +12,6 @@ def main():
     # Place player's ship
     print_board(player_board)
     print("Place your ship:")
-    player_ship_row, player_ship_col = player_input()
-    player_board[player_ship_row][player_ship_col] = "S"
     
   
     print("\nPlayer's Board:")
