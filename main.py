@@ -34,8 +34,6 @@ def main():
             print("You missed!")
             board[guess_row][guess_col] = "X"
         
-        print("\nComputer's Turn!")
-        comp_guess_row, comp_guess_col = random_row_col(), random_row_col()
         
         if comp_guess_row == player_ship_row and comp_guess_col == player_ship_col:
             print("Oh no! The computer sank your ship. You lose!")
