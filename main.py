@@ -107,19 +107,7 @@ def main():
         board = initialize_board()
         shot_board = [[' ']*7 for _ in range(7)]
 
-        while not check_victory(board):
-            clear_screen()
-            print(f"{player_name}'s Board:")
-            print_board(board)
-            print("\nShot Board:")
-            print_board(shot_board)
-
-            col, row = take_shot()
-            if 0 <= col < 7 and 0 <= row < 7 and shot_board[row][col] == ' ':
-                shot_board = update_board(board, shot_board, col, row)
-                player_score += 1
-            else:
-                print("Invalid shot. Please try again.")
+        
 
         clear_screen()
         print("Congratulations, you sank all the ships!")
